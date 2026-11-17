@@ -1,0 +1,6 @@
+---
+title: "Wizard Portfolio"
+about: 
+    template: jolla
+---
+## THIS IS A SIGN TO BE A WIZARD

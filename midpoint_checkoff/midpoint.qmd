@@ -1,0 +1,10 @@
+---
+title: "Midpoint Checkoff"
+description: "Accelerometer, SPI communication and SPRAM initial draft"
+author: "Jessica Li & Ellen Yu"
+date: "11/17/26"
+categories:
+  - reflection
+  - progress report
+draft: false
+--- 
