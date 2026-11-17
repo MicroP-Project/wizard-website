@@ -8,3 +8,17 @@ categories:
   - progress report
 draft: false
 --- 
+
+## Current Status
+
+### Accelerometer to User Motion Logic
+
+The current design is able to successfully collect input from the accelerometer when the button is pressed. When the button is pressed, the MCU takes in reading continuously from the accelerometer and compares it against the threshold value in the corresponding axis. The user motion logic records a valid input for the first accelerometer reading obtained pass the threshold value in the corresponding direction
+
+### SPI communication between Accelerometer, MCU and FPGA
+
+SPI communicaton between accelerometer, MCU and FPGA are set up. 
+The SPI connection between accelerometer and mcu is set up to allow the mcu to collect acceleration readings. The helper function `accelReadMg` collects acceleration reading in x, y and z axis. The initial draft of SPI connection between MCU and FPGA is set up, where the FPGA takes information from mcu and sends garbage. These three are connected so that a valid user input in +x direcion lights up a LED on the development board. 
+
+### Draft of SPRAM implementation
+
