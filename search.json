@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "midpoint_checkoff/midpoint.html",
+    "href": "midpoint_checkoff/midpoint.html",
+    "title": "Midpoint Checkoff",
+    "section": "",
+    "text": "Our project for E155 is a gesture-based spell-casting game in which the player waves a handheld wand (STM32L432KC MCU + LIS3DH accelerometer + push-button) to match directional prompts displayed on a 64×64 RGB LED matrix driven by an iCE40UP5K FPGA."
+  },
+  {
+    "objectID": "midpoint_checkoff/midpoint.html#midpoint-for-wizard-project",
+    "href": "midpoint_checkoff/midpoint.html#midpoint-for-wizard-project",
+    "title": "Midpoint Checkoff",
+    "section": "",
+    "text": "Our project for E155 is a gesture-based spell-casting game in which the player waves a handheld wand (STM32L432KC MCU + LIS3DH accelerometer + push-button) to match directional prompts displayed on a 64×64 RGB LED matrix driven by an iCE40UP5K FPGA."
+  },
+  {
+    "objectID": "midpoint_checkoff/midpoint.html#current-status",
+    "href": "midpoint_checkoff/midpoint.html#current-status",
+    "title": "Midpoint Checkoff",
+    "section": "Current Status",
+    "text": "Current Status\n\n\n\n\n\n\nNoteSchematic\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Schematic\n\n\n\nMidpoint schematic, full-system connections from the accelerometer to MCU to FPGA to RGB LED matrix.\n\n\n\n\n\n\n\n\n\nNoteSystem-level Block Diagram\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: System-level Block Diagram\n\n\n\nHigh-level system block diagram for the project. Green highlights indicate subsystems derisked by the project midpoint (player controls, MCU motion detection, MCU to FPGA SPI link, internal HSOSC clock, basic LED matrix driving, preliminary memory manager for SPRAM access), and the unshaded blocks represent remaining gameplay logic.\n\n\n\n\nPlayer Input & Gesture Detection: Button polling and LIS3DH accelerometer gesture recognition on the MCU.\nAll Communication Protocol Interfaces: Gesture detection from the LIS3DH accelerometer successfully triggers visual updates on the 64×64 RGB LED matrix, verifying end-to-end operation across (MCU to accelerometer), SPI 3 (MCU to FPGA), and basic HUB75 driving (FPGA to LED matrix)\nPreliminary SPRAM Interface: An initial SystemVerilog module verifying read/write access to the iCE40UP5K’s on-chip SP256K memory block.\n\nRemaining work for the final milestone includes implementing the MCU’s TRNG-based spell prompt generator, building the FPGA game-scoring FSM and countdown timer, and expanding the SPRAM memory manager to store and render directional arrows and life/score graphics.\n\nMCU Outline\n\nInitialization (initSPI, initAccel, accelSetRange): Configures SPI1 (for accelerometer communication) and SPI3 (for FPGA communication), enables accelerometer 100 Hz 12-bit high-resolution sampling, and sets full-scale range to 8g.\nSensor Acquisition (SPI) (accelDataReady, accelReadRaw, accelReadMg): Polls STATUS_REG, and once ready it reads the 6 output registers, and converts the raw 12-bit values to milli-g (mg).\nGesture Detection & Transmission (main loop): Polls the wand button, checks accelReadMg against x,y, x directional thresholds to record the first valid axis crossing. If the threshold exceeded is in the +x direction, it sends a 16-bit packet (0x0001 for +x) over SPI3 to the FPGA. For the debugging process, this signal causes the FPGA to light an LED to confirm successful communication. The SPI3 communication line will support all directions by project finish.\n\n\n\nFPGA Overview\n\n\n\n\n\n\nNoteFPGA Block Diagram\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: FPGA Block Diagram"
+  },
+  {
+    "objectID": "midpoint_checkoff/midpoint.html#part-orders-and-bom",
+    "href": "midpoint_checkoff/midpoint.html#part-orders-and-bom",
+    "title": "Midpoint Checkoff",
+    "section": "Part Orders and BOM",
+    "text": "Part Orders and BOM\n\nBill of Materials\n\n\nItem\nQuantity\nPrice\nPart number\nnotes\n\n\n\n\n64x64 RGB LED Matrix\n1\n42.89\nRGB-Matrix-P3.0-64x64\n\n\n\nAccelerometer\n1\nNA\nLIS3DH\nHMC stockroom\n\n\n\nAll parts have arrived."
+  }
+]
