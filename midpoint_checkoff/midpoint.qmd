@@ -54,9 +54,15 @@ Remaining work for the final milestone includes implementing the MCU's TRNG-base
 ::: {.callout-note collapse="false"}
 ## FPGA Block Diagram
 
-![FPGA Block Diagram](images/block.png){#fig-lock}
+![FPGA Block Diagram](images/block.png){#fig-block}
+
+Top-level RTL block diagram of the iCE40UP5K FPGA (wizard_top), illustrating the 48 MHz HSOSC clock tree, SPI receiver (fpga_spi) with chip-select edge detection (cs_sync), 1-second cast timer (cast_timer), and the 3 MHz HUB75 display driver (display_s1) alongside the preliminary SPRAM_row_test memory block.
+:::
 
 
+::: {.callout-note collapse="true"}
+## FSM
+![LED Driver FSM](images/FSM.jpg){#fig-fsm}
 :::
 
 ## Part Orders and BOM
